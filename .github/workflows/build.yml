@@ -66,10 +66,24 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release delete dev-build --cleanup-tag -y > /dev/null 2>&1 || true
+          set +e
+          LOG=/tmp/publish.log
+          ls -laR app/build/outputs/apk/ > "$LOG" 2>&1
+          gh release delete dev-build --cleanup-tag -y >> "$LOG" 2>&1
           gh release create dev-build \
-            app/build/outputs/apk/arm64-v8a/debug/app-arm64-v8a-debug.apk \
-            app/build/outputs/apk/universal/debug/app-universal-debug.apk \
+            app/build/outputs/apk/*/debug/*.apk \
             --title "Lyane 1.0 — geliştirme derlemesi" \
             --prerelease \
-            --notes "Otomatik derleme. Yükleme: APK'yı indirin, telefonunuzda 'bilinmeyen kaynaklardan kurulum'a izin verip açın. Arm64 çoğu modern telefon içindir; universal tüm cihazlarda çalışır (daha büyük). Modeller uygulama içi mağazadan indirilir."
+            --notes "Otomatik derleme. Yükleme: APK'yı indirin, telefonda bilinmeyen kaynaklardan kuruluma izin verip açın. Arm64 çoğu modern telefon içindir; universal tüm cihazlarda çalışır (daha büyük). Modeller uygulama içi mağazadan indirilir." \
+            >> "$LOG" 2>&1
+          rc=$?
+          if [ $rc -ne 0 ] || ! gh release view dev-build > /dev/null 2>&1; then
+            echo "RELEASE FAILED rc=$rc" >> "$LOG"
+            git config user.name "lyane-ci"
+            git config user.email "ci@lyane.local"
+            mkdir -p ci && cp "$LOG" ci/publish-log.txt
+            git add ci/publish-log.txt
+            git commit -m "ci: yayım günlüğü [skip ci]" || true
+            git push || true
+            exit 1
+          fi
