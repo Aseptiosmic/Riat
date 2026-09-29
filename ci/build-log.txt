@@ -2,21 +2,138 @@
 > Task :app:preBuild UP-TO-DATE
 > Task :app:preDebugBuild UP-TO-DATE
 > Task :app:generateDebugBuildConfig UP-TO-DATE
-> Task :app:checkDebugAarMetadata FAILED
-gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_3-1790669603761.json
+> Task :app:checkDebugAarMetadata UP-TO-DATE
+> Task :app:generateDebugResValues UP-TO-DATE
+> Task :app:mapDebugSourceSetPaths UP-TO-DATE
+> Task :app:generateDebugResources UP-TO-DATE
+> Task :app:mergeDebugResources UP-TO-DATE
+> Task :app:packageDebugResources UP-TO-DATE
+> Task :app:parseDebugLocalResources UP-TO-DATE
+> Task :app:createDebugCompatibleScreenManifests UP-TO-DATE
+> Task :app:extractDeepLinksDebug UP-TO-DATE
+> Task :app:processDebugMainManifest UP-TO-DATE
+> Task :app:processDebugManifest UP-TO-DATE
+> Task :app:processDebugManifestForPackage UP-TO-DATE
+> Task :app:processDebugResources UP-TO-DATE
+> Task :app:javaPreCompileDebug UP-TO-DATE
+> Task :app:preDebugUnitTestBuild UP-TO-DATE
+> Task :app:javaPreCompileDebugUnitTest UP-TO-DATE
+> Task :app:mergeDebugShaders UP-TO-DATE
+> Task :app:compileDebugShaders NO-SOURCE
+> Task :app:generateDebugAssets UP-TO-DATE
+> Task :app:mergeDebugAssets UP-TO-DATE
+> Task :app:packageDebugUnitTestForUnitTest UP-TO-DATE
+> Task :app:generateDebugUnitTestConfig UP-TO-DATE
+> Task :app:mergeDebugNativeDebugMetadata NO-SOURCE
+> Task :app:compressDebugAssets UP-TO-DATE
+> Task :app:desugarDebugFileDependencies UP-TO-DATE
+> Task :app:checkDebugDuplicateClasses UP-TO-DATE
+> Task :app:mergeExtDexDebug UP-TO-DATE
+> Task :app:mergeDebugJniLibFolders
+> Task :app:mergeLibDexDebug
+> Task :app:mergeDebugNativeLibs
+> Task :app:validateSigningDebug
+> Task :app:writeDebugAppMetadata
+> Task :app:writeDebugSigningConfigVersions
+
+> Task :app:stripDebugDebugSymbols
+Unable to strip the following libraries, packaging them as they are: libandroidx.graphics.path.so, libdatastore_shared_counter.so, libonnxruntime.so, libsherpa-onnx-c-api.so, libsherpa-onnx-cxx-api.so, libsherpa-onnx-jni.so.
+
+> Task :app:compileDebugKotlin FAILED
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/LyaneApp.kt:13:29 Unresolved reference 'ModelRegistry'.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/LyaneApp.kt:53:20 Unresolved reference 'ModelRegistry'.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/drop/DropManager.kt:6:29 Unresolved reference 'ModelRegistry'.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/drop/DropManager.kt:37:27 Unresolved reference 'ModelRegistry'.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/drop/DropManager.kt:153:18 Unresolved reference 'customCatalogs'.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/drop/DropManager.kt:153:49 Cannot infer type for this parameter. Please specify it explicitly.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/drop/DropManager.kt:154:35 Unresolved reference 'catalogsDir'.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/drop/DropManager.kt:157:31 Unresolved reference 'length'.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/drop/DropManager.kt:191:60 Unresolved reference 'catalogsDir'.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/drop/DropManager.kt:231:26 Unresolved reference 'importCatalog'.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/drop/DropManager.kt:231:55 Cannot infer type for this parameter. Please specify it explicitly.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/drop/DropManager.kt:231:55 Not enough information to infer type argument for 'T'.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/drop/DropManager.kt:232:21 Cannot infer type for this parameter. Please specify it explicitly.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/drop/DropServer.kt:130:53 Return type mismatch: expected 'java.net.Inet4Address?', actual 'java.net.InetAddress?'.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/drop/DropServer.kt:139:30 Argument type mismatch: actual type is 'java.net.InetAddress', but 'java.net.Inet4Address' was expected.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/drop/DropServer.kt:187:18 Cannot infer type for this parameter. Please specify it explicitly.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/drop/DropServer.kt:187:18 Not enough information to infer type argument for 'T'.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/drop/DropServer.kt:187:35 Unresolved reference 'MapSerializerString'.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/engine/Benchmarker.kt:40:26 Cannot infer type for this parameter. Please specify it explicitly.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/engine/Benchmarker.kt:40:26 Not enough information to infer type argument for 'R'.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/engine/Benchmarker.kt:40:38 Cannot infer type for this parameter. Please specify it explicitly.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/engine/Benchmarker.kt:41:18 Cannot infer type for this parameter. Please specify it explicitly.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/engine/Benchmarker.kt:41:18 Not enough information to infer type argument for 'T'.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/engine/Benchmarker.kt:41:35 Cannot infer type for this parameter. Please specify it explicitly.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/engine/Benchmarker.kt:41:35 Not enough information to infer type argument for 'T'.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/engine/Benchmarker.kt:41:35 Argument type mismatch: actual type is 'kotlin.collections.List<T#2 (type parameter of fun <T> List(size: Int, init: (@ParameterName(...) Int) -> T): List<T>)>', but 'kotlinx.serialization.DeserializationStrategy<T#1 (type parameter of fun <T> decodeFromString(deserializer: DeserializationStrategy<T>, string: String): T)>' was expected.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/engine/Benchmarker.kt:41:40 Argument type mismatch: actual type is 'kotlinx.serialization.KSerializer<com.riat.lyane.engine.Benchmarker.Result>', but 'kotlin.Int' was expected.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/engine/Benchmarker.kt:41:40 No value passed for parameter 'init'.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/engine/EngineManager.kt:74:24 Unresolved reference 'inputFinished'.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/engine/EngineManager.kt:84:41 Unresolved reference 'buildOfflineConfig'.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/engine/EngineManager.kt:147:18 Unresolved reference 'release'.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/engine/EngineManager.kt:216:9 Cannot infer type for this parameter. Please specify it explicitly.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/engine/EngineManager.kt:216:21 Cannot infer type for this parameter. Please specify it explicitly.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/engine/EngineManager.kt:216:35 Unresolved reference 'release'.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/library/LibraryRepository.kt:49:13 Cannot infer type for this parameter. Please specify it explicitly.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/library/LibraryRepository.kt:49:13 Not enough information to infer type argument for 'R'.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/library/LibraryRepository.kt:49:25 Cannot infer type for this parameter. Please specify it explicitly.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/library/LibraryRepository.kt:50:22 Cannot infer type for this parameter. Please specify it explicitly.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/library/LibraryRepository.kt:50:22 Not enough information to infer type argument for 'T'.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/library/LibraryRepository.kt:50:39 Cannot infer type for this parameter. Please specify it explicitly.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/library/LibraryRepository.kt:50:39 Not enough information to infer type argument for 'T'.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/library/LibraryRepository.kt:50:39 Argument type mismatch: actual type is 'kotlin.collections.List<T#2 (type parameter of fun <T> List(size: Int, init: (@ParameterName(...) Int) -> T): List<T>)>', but 'kotlinx.serialization.DeserializationStrategy<T#1 (type parameter of fun <T> decodeFromString(deserializer: DeserializationStrategy<T>, string: String): T)>' was expected.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/library/LibraryRepository.kt:50:44 Argument type mismatch: actual type is 'kotlinx.serialization.KSerializer<com.riat.lyane.library.LibraryRepository.Item>', but 'kotlin.Int' was expected.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/library/LibraryRepository.kt:50:44 No value passed for parameter 'init'.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/library/LibraryRepository.kt:51:15 Cannot infer type for this parameter. Please specify it explicitly.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/library/LibraryRepository.kt:51:15 Not enough information to infer type argument for 'R'.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/library/LibraryRepository.kt:51:15 Not enough information to infer type argument for 'T'.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/library/LibraryRepository.kt:51:25 Cannot infer type for this parameter. Please specify it explicitly.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/library/LibraryRepository.kt:52:66 Cannot infer type for this parameter. Please specify it explicitly.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/library/LibraryRepository.kt:52:66 Not enough information to infer type argument for 'T'.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/library/LibraryRepository.kt:53:15 Overload resolution ambiguity between candidates:
+fun <T, R : Comparable<R>> Array<out T>.sortedByDescending(crossinline selector: (T) -> R?): List<T>
+fun <R : Comparable<R>> BooleanArray.sortedByDescending(crossinline selector: (Boolean) -> R?): List<Boolean>
+fun <R : Comparable<R>> ByteArray.sortedByDescending(crossinline selector: (Byte) -> R?): List<Byte>
+fun <R : Comparable<R>> CharArray.sortedByDescending(crossinline selector: (Char) -> R?): List<Char>
+fun <R : Comparable<R>> DoubleArray.sortedByDescending(crossinline selector: (Double) -> R?): List<Double>
+fun <R : Comparable<R>> FloatArray.sortedByDescending(crossinline selector: (Float) -> R?): List<Float>
+fun <R : Comparable<R>> IntArray.sortedByDescending(crossinline selector: (Int) -> R?): List<Int>
+fun <R : Comparable<R>> LongArray.sortedByDescending(crossinline selector: (Long) -> R?): List<Long>
+fun <R : Comparable<R>> ShortArray.sortedByDescending(crossinline selector: (Short) -> R?): List<Short>
+fun <T, R : Comparable<R>> Iterable<T>.sortedByDescending(crossinline selector: (T) -> R?): List<T>
+fun <T, R : Comparable<R>> Sequence<T>.sortedByDescending(crossinline selector: (T) -> R?): Sequence<T>
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/library/LibraryRepository.kt:53:34 Unresolved reference 'createdAtMs'.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/library/LibraryRepository.kt:53:36 Unresolved reference 'it'.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/model/ModelDownloadManager.kt:28:27 Unresolved reference 'ModelRegistry'.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/model/ModelDownloadManager.kt:73:29 Unresolved reference 'byId'.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/model/ModelDownloadManager.kt:201:29 Unresolved reference 'catalog'.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/model/ModelDownloadManager.kt:201:57 Unresolved reference 'it'.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/model/ModelDownloadManager.kt:206:37 Unresolved reference 'id'.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/model/ModelRegistry.kt:91:1 Syntax error: Unclosed comment.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/plugin/PluginManager.kt:166:9 Argument type mismatch: actual type is 'kotlin.Result<com.riat.lyane.plugin.PluginManager.InstalledPlugin>', but 'com.riat.lyane.plugin.PluginManager.InstalledPlugin' was expected.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/plugin/ScriptPluginHost.kt:36:20 Cannot access 'field classShutter: ClassShutter!': it is private in 'org/mozilla/javascript/Context'.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/plugin/ScriptPluginHost.kt:36:35 Unresolved reference 'ClassShutter'.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/plugin/ScriptPluginHost.kt:36:50 Cannot infer type for this parameter. Please specify it explicitly.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/plugin/ScriptPluginHost.kt:38:26 Overload resolution ambiguity between candidates:
+fun String.startsWith(prefix: String, ignoreCase: Boolean = ...): Boolean
+fun CharSequence.startsWith(prefix: CharSequence, ignoreCase: Boolean = ...): Boolean
+fun File.startsWith(other: String): Boolean
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/plugin/ScriptPluginHost.kt:91:25 None of the following candidates is applicable:
+fun get(p0: String!, p1: Scriptable!): Any!
+fun get(p0: Symbol!, p1: Scriptable!): Any!
+fun get(p0: Int, p1: Scriptable!): Any!
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/ui/Vm.kt:19:29 Unresolved reference 'ModelRegistry'.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/ui/Vm.kt:97:66 Cannot infer type for this parameter. Please specify it explicitly.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/ui/Vm.kt:419:21 Unresolved reference 'ModelRegistry'.
+e: file:///home/runner/work/Riat/Riat/app/src/main/java/com/riat/lyane/ui/screens/ToolsScreen.kt:20:47 Unresolved reference 'Hotword'.
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_3-1790670107152.json
 
 FAILURE: Build failed with an exception.
 
 * What went wrong:
-Execution failed for task ':app:checkDebugAarMetadata'.
-> Could not resolve all files for configuration ':app:debugRuntimeClasspath'.
-   > Could not find com.k2-fsa:sherpa-onnx:1.13.8.
-     Searched in the following locations:
-       - https://dl.google.com/dl/android/maven2/com/k2-fsa/sherpa-onnx/1.13.8/sherpa-onnx-1.13.8.pom
-       - https://repo.maven.apache.org/maven2/com/k2-fsa/sherpa-onnx/1.13.8/sherpa-onnx-1.13.8.pom
-       - https://github.com/k2-fsa/sherpa-onnx/releases/download/v1.13.8/sherpa-onnx-1.13.8.jar
-     Required by:
-         project :app
+Execution failed for task ':app:compileDebugKotlin'.
+> A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
+   > Compilation error. See log for more details
 
 * Try:
 > Run with --stacktrace option to get the stack trace.
@@ -24,5 +141,5 @@ Execution failed for task ':app:checkDebugAarMetadata'.
 > Run with --scan to get full insights.
 > Get more help at https://help.gradle.org.
 
-BUILD FAILED in 1s
-2 actionable tasks: 1 executed, 1 up-to-date
+BUILD FAILED in 8s
+32 actionable tasks: 8 executed, 24 up-to-date
