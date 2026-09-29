@@ -20,6 +20,22 @@ android {
         vectorDrawables { useSupportLibrary = true }
     }
 
+    signingConfigs {
+        // CI'da sabit imza: her derleme aynı anahtarla imzalanır, böylece
+        // yeni APK'lar mevcut kurulumun üzerine yüklenebilir (debug imza
+        // anahtarı gizli değildir; AOSP de aleni bir debug anahtarı dağıtır).
+        // Dosya yoksa (yerel derleme) varsayılan debug imzası kullanılır.
+        if (rootProject.file("keystores/lyane-debug.p12").isFile) {
+            create("ciDebug") {
+                storeFile = rootProject.file("keystores/lyane-debug.p12")
+                storePassword = "lyane"
+                keyAlias = "lyane"
+                keyPassword = "lyane"
+                storeType = "PKCS12"
+            }
+        }
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = true
@@ -31,6 +47,10 @@ android {
         }
         debug {
             applicationIdSuffix = ".debug"
+            signingConfig = if (rootProject.file("keystores/lyane-debug.p12").isFile)
+                signingConfigs.getByName("ciDebug")
+            else
+                signingConfigs.getByName("debug")
         }
     }
 

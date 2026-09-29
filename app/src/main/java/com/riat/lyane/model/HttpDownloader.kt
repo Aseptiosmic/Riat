@@ -49,6 +49,12 @@ class HttpDownloader {
             }
 
             val code = conn.responseCode
+            if (code == 416 && offset > 0) {
+                // "Range Not Satisfiable": .part dosyası zaten tamam —
+                // indirmeyi atla, doğrulama/açma aşamasına geç.
+                onProgress(Progress(offset, offset, 0.0))
+                return@withContext offset
+            }
             when {
                 code == 206 -> { /* aralıklı yanıt: kaldığı yerden devam */ }
                 code == 200 && offset > 0 -> {

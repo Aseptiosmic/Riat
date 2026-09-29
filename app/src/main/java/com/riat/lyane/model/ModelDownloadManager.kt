@@ -126,12 +126,8 @@ class ModelDownloadManager(
         }
 
         val part = partFile(spec.id)
-        if (spec.format != "file" || spec.url.isNotBlank()) {
+        if (spec.url.isNotBlank()) {
             update(spec.id) { State.Downloading(part.length(), spec.sizeBytes, 0.0) }
-            if (spec.url.isBlank()) {
-                update(spec.id) { State.Failed("Model adresi (url) tanımlı değil") }
-                return
-            }
             downloader.download(
                 url = spec.url,
                 dest = part,
@@ -140,17 +136,26 @@ class ModelDownloadManager(
                 },
                 isCancelled = { spec.id in pausedIds }
             )
+        } else if (!part.isFile || part.length() == 0L) {
+            update(spec.id) { State.Failed("Model adresi (url) tanımlı değil") }
+            return
+        }
+        if (!part.isFile || part.length() == 0L) {
+            update(spec.id) { State.Failed("İndirme tamamlanamadı (dosya boş)") }
+            return
         }
 
         update(spec.id) { State.Extracting(0) }
         val staging = File(store.cacheDir, spec.id).apply { deleteRecursively(); mkdirs() }
-        val isArchive = spec.format != "file"
-        val count = if (isArchive) {
-            Archive.extract(part, staging) { n -> update(spec.id) { State.Extracting(n) } }
-        } else {
-            val target = File(staging, part.name)
-            part.copyTo(target, overwrite = true)
+        val count = if (spec.format == "file") {
+            // Tek dosya (ör. silero_vad.onnx): katalogdaki adla kopyala;
+            // ".part" adı PathResolver'ın dosyayı bulmasını engellerdi.
+            val targetName = spec.paths.model.firstOrNull { it.isNotBlank() && !it.contains('*') }
+                ?: spec.url.substringAfterLast('/').substringBefore('?').ifBlank { "${spec.id}.onnx" }
+            part.copyTo(File(staging, targetName), overwrite = true)
             1
+        } else {
+            Archive.extract(part, staging, formatHint = spec.format) { n -> update(spec.id) { State.Extracting(n) } }
         }
         if (count == 0) {
             staging.deleteRecursively()

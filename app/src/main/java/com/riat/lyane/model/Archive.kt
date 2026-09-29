@@ -18,23 +18,62 @@ import java.io.InputStream
  */
 object Archive {
 
-    fun extract(archive: File, targetDir: File, onFile: (Int) -> Unit = {}): Int {
+    /**
+     * @param formatHint katalogdaki "format" değeri (tar.bz2 | tar.gz | tar |
+     *        zip | file). Boşsa uzantıya, o da tanımsızsa dosyanın ilk
+     *        baytlarındaki imzaya bakılır. İndirme sırasında dosya adı
+     *        "<id>.part" olduğundan ipucu/imza olmadan tür bulunamaz.
+     */
+    fun extract(archive: File, targetDir: File, formatHint: String = "", onFile: (Int) -> Unit = {}): Int {
         targetDir.mkdirs()
-        val name = archive.name.lowercase()
-        val count = when {
-            name.endsWith(".tar.bz2") || name.endsWith(".tbz2") -> extractTar(wrapBzip2(archive), targetDir, onFile)
-            name.endsWith(".tar.gz") || name.endsWith(".tgz") -> extractTar(wrapGzip(archive), targetDir, onFile)
-            name.endsWith(".tar") -> extractTar(archive.inputStream().buffered(), targetDir, onFile)
-            name.endsWith(".zip") -> extractZip(archive, targetDir, onFile)
-            name.endsWith(".onnx") || name.endsWith(".ort") -> {
+        val count = when (detectKind(archive, formatHint)) {
+            Kind.TAR_BZ2 -> extractTar(wrapBzip2(archive), targetDir, onFile)
+            Kind.TAR_GZ -> extractTar(wrapGzip(archive), targetDir, onFile)
+            Kind.TAR -> extractTar(archive.inputStream().buffered(), targetDir, onFile)
+            Kind.ZIP -> extractZip(archive, targetDir, onFile)
+            Kind.SINGLE -> {
                 val f = File(targetDir, archive.name)
                 archive.copyTo(f, overwrite = true)
                 1
             }
-            else -> error("Desteklenmeyen arşiv türü: ${archive.name}")
+            Kind.UNKNOWN -> error("Desteklenmeyen arşiv türü: ${archive.name}")
         }
         flatten(targetDir)
         return count
+    }
+
+    private enum class Kind { TAR_BZ2, TAR_GZ, TAR, ZIP, SINGLE, UNKNOWN }
+
+    /** Tür sırası: biçim ipucu → uzantı → içerik imzası. */
+    private fun detectKind(archive: File, hint: String): Kind {
+        when (hint) {
+            "tar.bz2", "tbz2" -> return Kind.TAR_BZ2
+            "tar.gz", "tgz" -> return Kind.TAR_GZ
+            "tar" -> return Kind.TAR
+            "zip" -> return Kind.ZIP
+            "file", "onnx", "ort" -> return Kind.SINGLE
+        }
+        val name = archive.name.lowercase()
+        if (name.endsWith(".tar.bz2") || name.endsWith(".tbz2")) return Kind.TAR_BZ2
+        if (name.endsWith(".tar.gz") || name.endsWith(".tgz")) return Kind.TAR_GZ
+        if (name.endsWith(".tar")) return Kind.TAR
+        if (name.endsWith(".zip")) return Kind.ZIP
+        if (name.endsWith(".onnx") || name.endsWith(".ort")) return Kind.SINGLE
+        // İçerik imzası: .part gibi anlamsız adlarda da güvenilir
+        runCatching {
+            java.io.RandomAccessFile(archive, "r").use { raf ->
+                val head = ByteArray(3)
+                raf.readFully(head)
+                if (head[0] == 'B'.code.toByte() && head[1] == 'Z'.code.toByte() && head[2] == 'h'.code.toByte())
+                    return Kind.TAR_BZ2
+                if (head[0] == 0x1F.toByte() && head[1] == 0x8B.toByte()) return Kind.TAR_GZ
+                if (head[0] == 'P'.code.toByte() && head[1] == 'K'.code.toByte()) return Kind.ZIP
+                val magic = ByteArray(5)
+                raf.seek(257)
+                if (raf.read(magic) == 5 && String(magic) == "ustar") return Kind.TAR
+            }
+        }
+        return Kind.UNKNOWN
     }
 
     private fun wrapBzip2(f: File): InputStream =
