@@ -112,6 +112,7 @@ object WavIo {
     }
 
     fun read(file: File): WavData {
+        if (file.length() < 12) throw WavException("WAV dosyası değil (çok kısa): ${file.name}")
         DataInputStream(BufferedInputStream(FileInputStream(file), 1 shl 16)).use { din ->
             val header = ByteArray(12)
             din.readFully(header)

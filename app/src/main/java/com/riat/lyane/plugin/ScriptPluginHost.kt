@@ -68,7 +68,7 @@ class ScriptPluginHost(
             try {
                 val f = s.get(functionName, s)
                 if (f === Scriptable.NOT_FOUND || f !is Function) return@synchronized null
-                val jsArgs = args.map { Context.javaToJS(it, s) }.toTypedArray()
+                val jsArgs = args.map { toJs(cx, it, s) }.toTypedArray()
                 val r = f.call(cx, s, s, jsArgs)
                 when (r) {
                     is String, is Number, is Boolean -> r
@@ -84,6 +84,14 @@ class ScriptPluginHost(
             }
         }
     }
+
+    /** Java/Kotlin değerini JS değerine çevirir; Map'ler düz JS nesnesi olur. */
+    private fun toJs(cx: Context, v: Any?, scope: Scriptable): Any =
+        if (v is Map<*, *>) {
+            val obj = cx.newObject(scope)
+            for ((k, value) in v) ScriptableObject.putProperty(obj, k.toString(), Context.javaToJS(value, scope))
+            obj
+        } else Context.javaToJS(v, scope)
 
     /** JS nesnesini (ör. {output: "..."}) Map<String,String>'e çevirir. */
     private fun nativeObjectToMap(obj: org.mozilla.javascript.NativeObject): Map<String, String> {

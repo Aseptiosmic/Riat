@@ -8,10 +8,22 @@ import org.junit.Test
 class TextSplitterTest {
 
     @Test
-    fun `basit cümleler bölünür`() {
+    fun `kısa cümleler akış için tek parçada birleşir`() {
+        // Kısa cümleler bilinçli olarak birleştirilir (daha az sentez çağrısı,
+        // daha doğal ezgi). İçerik kaybolmadan tek parçada kalmalı.
         val r = TextSplitter.sentences("Merhaba dünya. Nasılsın? İyiyim!")
-        assertEquals(3, r.size)
-        assertEquals("Merhaba dünya.", r[0])
+        assertEquals(1, r.size)
+        assertEquals("Merhaba dünya. Nasılsın? İyiyim!", r[0])
+    }
+
+    @Test
+    fun `uzun cümleler ayrı kalır`() {
+        val a = "Bu birinci cümle ve yeterince uzun tutuldu ki birleşmesin."
+        val b = "Bu da ikinci cümle ve benzer şekilde uzun tutuldu burada."
+        val r = TextSplitter.sentences("$a $b")
+        assertEquals(2, r.size)
+        assertEquals(a, r[0])
+        assertEquals(b, r[1])
     }
 
     @Test
@@ -24,8 +36,14 @@ class TextSplitterTest {
 
     @Test
     fun `kısaltmalar bölmez`() {
-        val r = TextSplitter.sentences("Dr. Ayşe geldi. Toplantı başladı.")
+        // "Dr." noktası cümle sonu sayılmamalı; parçalar birleşmeyecek
+        // kadar uzun seçildi (birleştirme ayrı test edilir).
+        val a = "Dr. Ayşe dün akşam toplantıya katıldı ve sunum yaptı."
+        val b = "Toplantı tüm ekibin katılımıyla oldukça verimli geçti."
+        val r = TextSplitter.sentences("$a $b")
         assertEquals(2, r.size)
+        assertEquals(a, r[0])
+        assertEquals(b, r[1])
     }
 
     @Test
@@ -44,7 +62,11 @@ class TextSplitterTest {
 
     @Test
     fun `satır sonları cümle sınırı sayılır`() {
-        val r = TextSplitter.sentences("bir satır\nikinci satır")
+        val a = "ilk satır yeterince uzun tutuldu burada ayrı dursun"
+        val b = "ikinci satır da benzer şekilde uzun tutuldu burada"
+        val r = TextSplitter.sentences("$a\n$b")
         assertEquals(2, r.size)
+        assertEquals(a, r[0])
+        assertEquals(b, r[1])
     }
 }
