@@ -1,0 +1,18 @@
+app/build/outputs/apk/:
+total 12
+drwxr-xr-x 3 runner runner 4096 Sep 29 09:08 .
+drwxr-xr-x 4 runner runner 4096 Sep 29 09:08 ..
+drwxr-xr-x 2 runner runner 4096 Sep 29 09:08 debug
+
+app/build/outputs/apk/debug:
+total 291720
+drwxr-xr-x 2 runner runner      4096 Sep 29 09:08 .
+drwxr-xr-x 3 runner runner      4096 Sep 29 09:08 ..
+-rw-r--r-- 1 runner runner  52055379 Sep 29 09:08 app-arm64-v8a-debug.apk
+-rw-r--r-- 1 runner runner  42405723 Sep 29 09:08 app-armeabi-v7a-debug.apk
+-rw-r--r-- 1 runner runner 147972233 Sep 29 09:08 app-universal-debug.apk
+-rw-r--r-- 1 runner runner  56269497 Sep 29 09:08 app-x86_64-debug.apk
+-rw-r--r-- 1 runner runner      1243 Sep 29 09:08 output-metadata.json
+release not found
+no matches found for `app/build/outputs/apk/*/debug/*.apk`
+RELEASE FAILED rc=1
