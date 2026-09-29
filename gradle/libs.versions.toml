@@ -35,7 +35,6 @@ androidx-datastore-preferences = { group = "androidx.datastore", name = "datasto
 androidx-documentfile = { group = "androidx.documentfile", name = "documentfile", version.ref = "documentfile" }
 kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "serializationJson" }
-k2-fsa-sherpa-onnx = { group = "com.k2-fsa", name = "sherpa-onnx", version.ref = "sherpaOnnx" }
 mozilla-rhino = { group = "org.mozilla", name = "rhino", version.ref = "rhino" }
 apache-commons-compress = { group = "org.apache.commons", name = "commons-compress", version.ref = "commonsCompress" }
 nanohttpd = { group = "org.nanohttpd", name = "nanohttpd", version.ref = "nanohttpd" }

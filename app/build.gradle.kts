@@ -74,7 +74,8 @@ dependencies {
     // ── Lyane konuşma motoru: sherpa-onnx (k2-fsa) ────────────────────────
     // AAR, settings.gradle.kts içindeki ivy deposu üzerinden GitHub
     // Release'lerinden otomatik indirilir (ilk derlemede internet gerekir).
-    implementation(libs.k2.fsa.sherpa.onnx)
+    // @aar: ivy deseninde [ext] = aar olarak çözülür
+    implementation("com.k2-fsa:sherpa-onnx:${libs.versions.sherpaOnnx.get()}@aar")
 
     // Çevrimdışı alternatif: AAR'ı
     // https://github.com/k2-fsa/sherpa-onnx/releases/download/v1.13.8/sherpa-onnx-1.13.8.aar
