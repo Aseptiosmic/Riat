@@ -60,9 +60,8 @@ class PathResolverTest {
     @Test
     fun `glob eşleşmesi alt dizinde de çalışır`() {
         val dir = tmp.newFolder("m3")
-        dir.resolve("kokoro-v0_19").resolve("model.onnx").apply {
-            parent.mkdirs(); writeText("x")
-        }
+        dir.resolve("kokoro-v0_19").mkdirs()
+        dir.resolve("kokoro-v0_19").resolve("model.onnx").writeText("x")
         val spec = model("kokoro", EnginePaths(model = listOf("model.onnx", "*.onnx")))
         val r = PathResolver.resolve(dir, spec)
         assertNotNull(r.files["model"])
@@ -82,7 +81,8 @@ class PathResolverTest {
     @Test
     fun `dataDir bulunur`() {
         val dir = tmp.newFolder("m5")
-        dir.resolve("espeak-ng-data").resolve("lang").apply { parent.mkdirs(); writeText("x") }
+        dir.resolve("espeak-ng-data").mkdirs()
+        dir.resolve("espeak-ng-data").resolve("lang").writeText("x")
         dir.resolve("model.onnx").writeText("x")
         dir.resolve("tokens.txt").writeText("x")
         val spec = model(
