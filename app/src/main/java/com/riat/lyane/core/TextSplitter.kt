@@ -26,7 +26,11 @@ object TextSplitter {
                 val before = wordBefore(normalized, i)
                 val isAbbrev = ABBREV.any { it.equals(before, ignoreCase = true) }
                 val next = normalized.getOrNull(i + 1)
-                if (!isAbbrev && (next == null || next.isWhitespace() || next == '"' || next == '’' || next == '\'')) {
+                // Satır sonu her zaman sınırdır (kendi başına boşluk); diğer
+                // noktalama için bir sonraki karakterin boşluk olması istenir.
+                val boundary = c == '\n' ||
+                    (!isAbbrev && (next == null || next.isWhitespace() || next == '"' || next == '’' || next == '\''))
+                if (boundary) {
                     push(sb, out)
                 }
             }
