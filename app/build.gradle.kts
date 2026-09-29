@@ -65,6 +65,8 @@ android {
     }
     testOptions {
         unitTests.isIncludeAndroidResources = true
+        // LyLog android.util.Log kullanır; JVM testlerinde sessiz varsayılan dön
+        unitTests.isReturnDefaultValues = true
     }
 }
 

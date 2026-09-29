@@ -1,0 +1,75 @@
+name: Build
+
+on:
+  push:
+    branches: ["**"]
+  workflow_dispatch:
+
+# Aynı dalda art arda itişlerde eski çalışmayı iptal et
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Derleme ve test
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Kodu al
+        uses: actions/checkout@v4
+
+      - name: JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Android SDK bileşenleri
+        run: |
+          export PATH="$PATH:$ANDROID_HOME/cmdline-tools/latest/bin"
+          yes | sdkmanager --licenses > /dev/null 2>&1 || true
+          sdkmanager --install "platforms;android-35" "build-tools;35.0.0" "platform-tools" > /dev/null
+
+      - name: Gradle kurulumu (önbellekli)
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Birim testleri + APK derlemesi
+        run: ./gradlew --stacktrace --console=plain testDebugUnitTest assembleDebug
+
+      - name: APK'ları artifact olarak yükle
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lyane-debug-apk
+          path: app/build/outputs/apk/**/debug/*.apk
+          if-no-files-found: warn
+
+      # Hata halinde: derleme günlüğünün kuyruğunu dala yaz ki
+      # dışarıdan (API ile) okunabilsin. [skip ci] döngüyü keser.
+      - name: Hata günlüğünü dala yaz
+        if: failure()
+        run: |
+          export PATH="$PATH:$ANDROID_HOME/cmdline-tools/latest/bin"
+          git config user.name "lyane-ci"
+          git config user.email "ci@lyane.local"
+          mkdir -p ci
+          ./gradlew --console=plain testDebugUnitTest assembleDebug > ci/build-log.txt 2>&1 || true
+          tail -n 500 ci/build-log.txt > /tmp/tail.txt && mv /tmp/tail.txt ci/build-log.txt
+          git add ci/build-log.txt
+          git commit -m "ci: derleme günlüğü [skip ci]" || true
+          git push || echo "NOT: günlük dala yazılamadı (izin yok) — Actions sayfasından okuyun"
+
+      - name: Geliştirme sürümünü yayımla
+        if: success() && github.ref == 'refs/heads/arena/01a0ebd0-riat'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release delete dev-build --cleanup-tag -y > /dev/null 2>&1 || true
+          gh release create dev-build \
+            app/build/outputs/apk/arm64-v8a/debug/app-arm64-v8a-debug.apk \
+            app/build/outputs/apk/universal/debug/app-universal-debug.apk \
+            --title "Lyane 1.0 — geliştirme derlemesi" \
+            --prerelease \
+            --notes "Otomatik derleme. Yükleme: APK'yı indirin, telefonunuzda 'bilinmeyen kaynaklardan kurulum'a izin verip açın. Arm64 çoğu modern telefon içindir; universal tüm cihazlarda çalışır (daha büyük). Modeller uygulama içi mağazadan indirilir."
