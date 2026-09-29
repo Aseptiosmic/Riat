@@ -1,0 +1,791 @@
+{
+  "version": 1,
+  "updatedAt": "2026-09-29",
+  "models": [
+    {
+      "id": "tr-piper-fahrettin-int8",
+      "name": "Piper Türkçe · Fahrettin",
+      "task": "tts",
+      "engine": "vits",
+      "languages": [
+        "tr"
+      ],
+      "sizeBytes": 21118817,
+      "license": "MIT",
+      "author": "Piper (rhasspy)",
+      "description": "Hafif ve hızlı Türkçe ses (medium kalite, int8). Lyane'yi Türkçe kullanmak için en küçük başlangıç modeli.",
+      "homeUrl": "https://huggingface.co/rhasspy/piper-voices",
+      "url": "https://github.com/k2-fsa/sherpa-onnx/releases/download/tts-models/vits-piper-tr_TR-fahrettin-medium-int8.tar.bz2",
+      "format": "tar.bz2",
+      "quality": 3,
+      "speed": 5,
+      "recommended": true,
+      "speakers": [],
+      "paths": {
+        "model": [
+          "tr_TR-fahrettin-medium.int8.onnx",
+          "model.int8.onnx",
+          "tr_TR-fahrettin-medium.onnx",
+          "*.onnx"
+        ],
+        "tokens": [
+          "tokens.txt"
+        ],
+        "dataDir": [
+          "espeak-ng-data"
+        ]
+      },
+      "options": {
+        "quantized": "true"
+      },
+      "minRamMb": 1024
+    },
+    {
+      "id": "tr-piper-dfki-int8",
+      "name": "Piper Türkçe · DFKI",
+      "task": "tts",
+      "engine": "vits",
+      "languages": [
+        "tr"
+      ],
+      "sizeBytes": 21135582,
+      "license": "MIT",
+      "author": "Piper (rhasspy)",
+      "description": "İkinci Türkçe Piper sesi (medium, int8). Alternatif ton.",
+      "url": "https://github.com/k2-fsa/sherpa-onnx/releases/download/tts-models/vits-piper-tr_TR-dfki-medium-int8.tar.bz2",
+      "format": "tar.bz2",
+      "quality": 3,
+      "speed": 5,
+      "speakers": [],
+      "paths": {
+        "model": [
+          "tr_TR-dfki-medium.int8.onnx",
+          "model.int8.onnx",
+          "tr_TR-dfki-medium.onnx",
+          "*.onnx"
+        ],
+        "tokens": [
+          "tokens.txt"
+        ],
+        "dataDir": [
+          "espeak-ng-data"
+        ]
+      },
+      "options": {
+        "quantized": "true"
+      },
+      "minRamMb": 1024
+    },
+    {
+      "id": "tr-piper-fettah-int8",
+      "name": "Piper Türkçe · Fettah",
+      "task": "tts",
+      "engine": "vits",
+      "languages": [
+        "tr"
+      ],
+      "sizeBytes": 21186168,
+      "license": "MIT",
+      "author": "Piper (rhasspy)",
+      "description": "Üçüncü Türkçe Piper sesi (medium, int8).",
+      "url": "https://github.com/k2-fsa/sherpa-onnx/releases/download/tts-models/vits-piper-tr_TR-fettah-medium-int8.tar.bz2",
+      "format": "tar.bz2",
+      "quality": 3,
+      "speed": 5,
+      "speakers": [],
+      "paths": {
+        "model": [
+          "tr_TR-fettah-medium.int8.onnx",
+          "model.int8.onnx",
+          "tr_TR-fettah-medium.onnx",
+          "*.onnx"
+        ],
+        "tokens": [
+          "tokens.txt"
+        ],
+        "dataDir": [
+          "espeak-ng-data"
+        ]
+      },
+      "options": {
+        "quantized": "true"
+      },
+      "minRamMb": 1024
+    },
+    {
+      "id": "en-kokoro-int8-v0_19",
+      "name": "Kokoro 82M (İngilizce)",
+      "task": "tts",
+      "engine": "kokoro",
+      "languages": [
+        "en"
+      ],
+      "sizeBytes": 103248205,
+      "license": "Apache-2.0",
+      "author": "hexgrad / k2-fsa",
+      "description": "82M parametreli, açık kaynakların en doğal İngilizce sesi. 11 farklı konuşmacı; int8 ile telefonda akıcı çalışır.",
+      "homeUrl": "https://huggingface.co/hexgrad/Kokoro-82M",
+      "url": "https://github.com/k2-fsa/sherpa-onnx/releases/download/tts-models/kokoro-int8-en-v0_19.tar.bz2",
+      "format": "tar.bz2",
+      "quality": 5,
+      "speed": 3,
+      "recommended": true,
+      "speakers": [
+        "af",
+        "af_bella",
+        "af_nicole",
+        "af_sarah",
+        "af_sky",
+        "am_adam",
+        "am_michael",
+        "bf_emma",
+        "bf_isabella",
+        "bm_george",
+        "bm_lewis"
+      ],
+      "paths": {
+        "model": [
+          "model.int8.onnx",
+          "model.onnx",
+          "*.onnx"
+        ],
+        "voices": [
+          "voices.bin",
+          "*.bin"
+        ],
+        "tokens": [
+          "tokens.txt"
+        ],
+        "dataDir": [
+          "espeak-ng-data"
+        ]
+      },
+      "options": {
+        "quantized": "true"
+      },
+      "minRamMb": 2048
+    },
+    {
+      "id": "kokoro-multi-int8-v1_1",
+      "name": "Kokoro Çok Dilli (Çince+İngilizce)",
+      "task": "tts",
+      "engine": "kokoro",
+      "languages": [
+        "en",
+        "zh"
+      ],
+      "sizeBytes": 147031220,
+      "license": "Apache-2.0",
+      "author": "hexgrad / k2-fsa",
+      "description": "Kokoro v1.1 — 103 konuşmacı (3 İngilizce kadın + 100 Çince). int8.",
+      "url": "https://github.com/k2-fsa/sherpa-onnx/releases/download/tts-models/kokoro-int8-multi-lang-v1_1.tar.bz2",
+      "format": "tar.bz2",
+      "quality": 5,
+      "speed": 3,
+      "speakers": [
+        "af_maple",
+        "af_sol",
+        "bf_vale",
+        "zf_001",
+        "zf_002",
+        "zf_003",
+        "zf_004",
+        "zf_005",
+        "zf_006",
+        "zf_007",
+        "zf_008",
+        "zf_009",
+        "zf_010",
+        "zf_011",
+        "zf_012",
+        "zf_013",
+        "zf_014",
+        "zf_015",
+        "zf_016",
+        "zf_017",
+        "zf_018",
+        "zf_019",
+        "zf_020",
+        "zf_021",
+        "zf_022",
+        "zf_023",
+        "zf_024",
+        "zf_025",
+        "zf_026",
+        "zf_027",
+        "zf_028",
+        "zf_029",
+        "zf_030",
+        "zf_031",
+        "zf_032",
+        "zf_033",
+        "zf_034",
+        "zf_035",
+        "zf_036",
+        "zf_037",
+        "zf_038",
+        "zf_039",
+        "zf_040",
+        "zf_041",
+        "zf_042",
+        "zf_043",
+        "zf_044",
+        "zf_045",
+        "zf_046",
+        "zf_047",
+        "zf_048",
+        "zf_049",
+        "zf_050",
+        "zf_051",
+        "zf_052",
+        "zf_053",
+        "zf_054",
+        "zf_055",
+        "zm_001",
+        "zm_002",
+        "zm_003",
+        "zm_004",
+        "zm_005",
+        "zm_006",
+        "zm_007",
+        "zm_008",
+        "zm_009",
+        "zm_010",
+        "zm_011",
+        "zm_012",
+        "zm_013",
+        "zm_014",
+        "zm_015",
+        "zm_016",
+        "zm_017",
+        "zm_018",
+        "zm_019",
+        "zm_020",
+        "zm_021",
+        "zm_022",
+        "zm_023",
+        "zm_024",
+        "zm_025",
+        "zm_026",
+        "zm_027",
+        "zm_028",
+        "zm_029",
+        "zm_030",
+        "zm_031",
+        "zm_032",
+        "zm_033",
+        "zm_034",
+        "zm_035",
+        "zm_036",
+        "zm_037",
+        "zm_038",
+        "zm_039",
+        "zm_040",
+        "zm_041",
+        "zm_042",
+        "zm_043",
+        "zm_044",
+        "zm_045"
+      ],
+      "paths": {
+        "model": [
+          "model.int8.onnx",
+          "model.onnx",
+          "*.onnx"
+        ],
+        "voices": [
+          "voices.bin",
+          "*.bin"
+        ],
+        "tokens": [
+          "tokens.txt"
+        ],
+        "dataDir": [
+          "espeak-ng-data"
+        ]
+      },
+      "options": {
+        "quantized": "true"
+      },
+      "minRamMb": 3072
+    },
+    {
+      "id": "en-matcha-ljspeech",
+      "name": "Matcha-TTS (İngilizce)",
+      "task": "tts",
+      "engine": "matcha",
+      "languages": [
+        "en"
+      ],
+      "sizeBytes": 76741121,
+      "license": "Apache-2.0",
+      "author": "k2-fsa / icefall",
+      "description": "Matcha + Vocos: hızlı ve net İngilizce ses (kadın). Kokoro'dan hafif, Piper'dan doğal.",
+      "url": "https://github.com/k2-fsa/sherpa-onnx/releases/download/tts-models/matcha-icefall-en_US-ljspeech.tar.bz2",
+      "format": "tar.bz2",
+      "quality": 4,
+      "speed": 4,
+      "speakers": [],
+      "paths": {
+        "acousticModel": [
+          "model-steps-3.onnx",
+          "model-steps*.onnx",
+          "*.onnx"
+        ],
+        "vocoder": [
+          "vocos-22khz-univ.onnx",
+          "vocos*.onnx",
+          "hifigan*.onnx"
+        ],
+        "tokens": [
+          "tokens.txt"
+        ],
+        "dataDir": [
+          "espeak-ng-data"
+        ]
+      },
+      "options": {},
+      "minRamMb": 1536
+    },
+    {
+      "id": "en-kitten-nano-int8",
+      "name": "Kitten TTS Nano (İngilizce)",
+      "task": "tts",
+      "engine": "kitten",
+      "languages": [
+        "en"
+      ],
+      "sizeBytes": 31220690,
+      "license": "Apache-2.0",
+      "author": "KittenML",
+      "description": "En hafif sinirsel TTS: 8 ses, çok hızlı. Giriş seviyesi cihazlar için.",
+      "url": "https://github.com/k2-fsa/sherpa-onnx/releases/download/tts-models/kitten-nano-en-v0_8-int8.tar.bz2",
+      "format": "tar.bz2",
+      "quality": 3,
+      "speed": 5,
+      "speakers": [],
+      "paths": {
+        "model": [
+          "model.int8.onnx",
+          "*.onnx"
+        ],
+        "voices": [
+          "voices.bin",
+          "*.bin"
+        ],
+        "tokens": [
+          "tokens.txt"
+        ],
+        "dataDir": [
+          "espeak-ng-data"
+        ]
+      },
+      "options": {
+        "quantized": "true"
+      },
+      "minRamMb": 768
+    },
+    {
+      "id": "supertonic-3-int8",
+      "name": "Supertonic 3 (deneysel)",
+      "task": "tts",
+      "engine": "supertonic",
+      "languages": [
+        "en"
+      ],
+      "sizeBytes": 128774318,
+      "license": "Apache-2.0",
+      "author": "SupertonicTTS / k2-fsa",
+      "description": "Yeni nesil hızlı TTS. Akış mimarisi; denemek için kataloğa eklenmiştir.",
+      "url": "https://github.com/k2-fsa/sherpa-onnx/releases/download/tts-models/sherpa-onnx-supertonic-3-tts-int8-2026-05-11.tar.bz2",
+      "format": "tar.bz2",
+      "quality": 4,
+      "speed": 5,
+      "speakers": [],
+      "paths": {
+        "durationPredictor": [
+          "duration_predictor.int8.onnx",
+          "duration_predictor*.onnx"
+        ],
+        "textEncoder": [
+          "text_encoder.int8.onnx",
+          "text_encoder*.onnx"
+        ],
+        "vectorEstimator": [
+          "vector_estimator.int8.onnx",
+          "vector_estimator*.onnx"
+        ],
+        "vocoder": [
+          "vocoder.int8.onnx",
+          "vocoder*.onnx"
+        ],
+        "ttsJson": [
+          "tts.json"
+        ],
+        "unicodeIndexer": [
+          "unicode_indexer.bin"
+        ],
+        "voiceStyle": [
+          "voice_style*.bin"
+        ]
+      },
+      "options": {
+        "quantized": "true"
+      },
+      "minRamMb": 2048
+    },
+    {
+      "id": "whisper-tiny",
+      "name": "Whisper Tiny (Çok Dilli)",
+      "task": "asr",
+      "engine": "whisper",
+      "languages": [
+        "tr",
+        "en",
+        "99 dil"
+      ],
+      "sizeBytes": 116204861,
+      "license": "MIT",
+      "author": "OpenAI / k2-fsa",
+      "description": "Türkçe dahil 99 dilde çeviriyazı. Tiny boyutu telefonda hızlı çalışır; int8 dosyaları otomatik seçilir.",
+      "homeUrl": "https://github.com/openai/whisper",
+      "url": "https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-whisper-tiny.tar.bz2",
+      "format": "tar.bz2",
+      "quality": 3,
+      "speed": 4,
+      "recommended": true,
+      "speakers": [],
+      "paths": {
+        "encoder": [
+          "tiny-encoder.int8.onnx",
+          "*-encoder.int8.onnx",
+          "tiny-encoder.onnx",
+          "*-encoder.onnx"
+        ],
+        "decoder": [
+          "tiny-decoder.int8.onnx",
+          "*-decoder.int8.onnx",
+          "tiny-decoder.onnx",
+          "*-decoder.onnx"
+        ],
+        "tokens": [
+          "tiny-tokens.txt",
+          "*-tokens.txt",
+          "tokens.txt"
+        ]
+      },
+      "options": {
+        "language": "auto",
+        "task": "transcribe",
+        "quantized": "true"
+      },
+      "minRamMb": 1536
+    },
+    {
+      "id": "whisper-base",
+      "name": "Whisper Base (Çok Dilli)",
+      "task": "asr",
+      "engine": "whisper",
+      "languages": [
+        "tr",
+        "en",
+        "99 dil"
+      ],
+      "sizeBytes": 207557382,
+      "license": "MIT",
+      "author": "OpenAI / k2-fsa",
+      "description": "Whisper tiny'den belirgin şekilde daha doğru; orta seviye cihazlarda akıcı.",
+      "url": "https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-whisper-base.tar.bz2",
+      "format": "tar.bz2",
+      "quality": 4,
+      "speed": 3,
+      "recommended": true,
+      "speakers": [],
+      "paths": {
+        "encoder": [
+          "base-encoder.int8.onnx",
+          "*-encoder.int8.onnx",
+          "base-encoder.onnx",
+          "*-encoder.onnx"
+        ],
+        "decoder": [
+          "base-decoder.int8.onnx",
+          "*-decoder.int8.onnx",
+          "base-decoder.onnx",
+          "*-decoder.onnx"
+        ],
+        "tokens": [
+          "base-tokens.txt",
+          "*-tokens.txt",
+          "tokens.txt"
+        ]
+      },
+      "options": {
+        "language": "auto",
+        "task": "transcribe",
+        "quantized": "true"
+      },
+      "minRamMb": 2048
+    },
+    {
+      "id": "whisper-small",
+      "name": "Whisper Small (Çok Dilli)",
+      "task": "asr",
+      "engine": "whisper",
+      "languages": [
+        "tr",
+        "en",
+        "99 dil"
+      ],
+      "sizeBytes": 639387718,
+      "license": "MIT",
+      "author": "OpenAI / k2-fsa",
+      "description": "Açık kaynakların en doğru taşıdığı Whisper boyutu. Güçlü cihazlar için.",
+      "url": "https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-whisper-small.tar.bz2",
+      "format": "tar.bz2",
+      "quality": 5,
+      "speed": 2,
+      "speakers": [],
+      "paths": {
+        "encoder": [
+          "small-encoder.int8.onnx",
+          "*-encoder.int8.onnx",
+          "small-encoder.onnx",
+          "*-encoder.onnx"
+        ],
+        "decoder": [
+          "small-decoder.int8.onnx",
+          "*-decoder.int8.onnx",
+          "small-decoder.onnx",
+          "*-decoder.onnx"
+        ],
+        "tokens": [
+          "small-tokens.txt",
+          "*-tokens.txt",
+          "tokens.txt"
+        ]
+      },
+      "options": {
+        "language": "auto",
+        "task": "transcribe",
+        "quantized": "true"
+      },
+      "minRamMb": 4096
+    },
+    {
+      "id": "moonshine-tiny-en",
+      "name": "Moonshine Tiny (İngilizce)",
+      "task": "asr",
+      "engine": "moonshine",
+      "languages": [
+        "en"
+      ],
+      "sizeBytes": 29858559,
+      "license": "MIT",
+      "author": "Useful Sensors / k2-fsa",
+      "description": "Kenar cihazlar için tasarlanmış yeni nesil model: Whisper tiny'den daha küçük ve daha doğru (v2, quantized).",
+      "homeUrl": "https://github.com/usefulsensors/moonshine",
+      "url": "https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-moonshine-tiny-en-quantized-2026-02-27.tar.bz2",
+      "format": "tar.bz2",
+      "quality": 3,
+      "speed": 5,
+      "recommended": true,
+      "speakers": [],
+      "paths": {
+        "encoder": [
+          "encoder_model.ort",
+          "encoder_model*.onnx",
+          "encoder_model*.ort"
+        ],
+        "mergedDecoder": [
+          "decoder_model_merged.ort",
+          "decoder_model_merged*.onnx",
+          "decoder_model_merged*.ort"
+        ],
+        "tokens": [
+          "tokens.txt"
+        ]
+      },
+      "options": {
+        "quantized": "true"
+      },
+      "minRamMb": 768
+    },
+    {
+      "id": "moonshine-base-en",
+      "name": "Moonshine Base (İngilizce)",
+      "task": "asr",
+      "engine": "moonshine",
+      "languages": [
+        "en"
+      ],
+      "sizeBytes": 111266225,
+      "license": "MIT",
+      "author": "Useful Sensors / k2-fsa",
+      "description": "Moonshine tiny'den daha doğru; hâlâ çok hızlı (v2, quantized).",
+      "url": "https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-moonshine-base-en-quantized-2026-02-27.tar.bz2",
+      "format": "tar.bz2",
+      "quality": 4,
+      "speed": 4,
+      "speakers": [],
+      "paths": {
+        "encoder": [
+          "encoder_model.ort",
+          "encoder_model*.onnx",
+          "encoder_model*.ort"
+        ],
+        "mergedDecoder": [
+          "decoder_model_merged.ort",
+          "decoder_model_merged*.onnx",
+          "decoder_model_merged*.ort"
+        ],
+        "tokens": [
+          "tokens.txt"
+        ]
+      },
+      "options": {
+        "quantized": "true"
+      },
+      "minRamMb": 1536
+    },
+    {
+      "id": "moonshine-base-es",
+      "name": "Moonshine Base (İspanyolca)",
+      "task": "asr",
+      "engine": "moonshine",
+      "languages": [
+        "es"
+      ],
+      "sizeBytes": 50846902,
+      "license": "MIT",
+      "author": "Useful Sensors / k2-fsa",
+      "description": "İspanyolca çeviriyazı — Moonshine v2 quantized.",
+      "url": "https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-moonshine-base-es-quantized-2026-02-27.tar.bz2",
+      "format": "tar.bz2",
+      "quality": 4,
+      "speed": 4,
+      "speakers": [],
+      "paths": {
+        "encoder": [
+          "encoder_model.ort",
+          "encoder_model*.onnx",
+          "encoder_model*.ort"
+        ],
+        "mergedDecoder": [
+          "decoder_model_merged.ort",
+          "decoder_model_merged*.onnx",
+          "decoder_model_merged*.ort"
+        ],
+        "tokens": [
+          "tokens.txt"
+        ]
+      },
+      "options": {
+        "quantized": "true"
+      },
+      "minRamMb": 1536
+    },
+    {
+      "id": "sensevoice-small-int8",
+      "name": "SenseVoice Small (5 dil)",
+      "task": "asr",
+      "engine": "sensevoice",
+      "languages": [
+        "zh",
+        "en",
+        "ja",
+        "ko",
+        "yue"
+      ],
+      "sizeBytes": 163002883,
+      "license": "Apache-2.0",
+      "author": "FunAudioLLM / k2-fsa",
+      "description": "Çince, İngilizce, Japonca, Korece ve Kantonca için çok hızlı, inverse text normalizasyonlu tanıma.",
+      "url": "https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-sense-voice-zh-en-ja-ko-yue-int8-2024-07-17.tar.bz2",
+      "format": "tar.bz2",
+      "quality": 4,
+      "speed": 5,
+      "speakers": [],
+      "paths": {
+        "model": [
+          "model.int8.onnx",
+          "model.onnx"
+        ],
+        "tokens": [
+          "tokens.txt"
+        ]
+      },
+      "options": {
+        "language": "auto",
+        "useItn": "true",
+        "quantized": "true"
+      },
+      "minRamMb": 2048
+    },
+    {
+      "id": "zipformer-streaming-en-20M",
+      "name": "Zipformer 20M Canlı (İngilizce)",
+      "task": "asr_live",
+      "engine": "transducer",
+      "languages": [
+        "en"
+      ],
+      "sizeBytes": 127887156,
+      "license": "Apache-2.0",
+      "author": "icefall / k2-fsa",
+      "description": "Gerçek zamanlı akış tanıma: kelime söylenirken ekranda görünür. Uç nokta algılamalı.",
+      "url": "https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-streaming-zipformer-en-20M-2023-02-17.tar.bz2",
+      "format": "tar.bz2",
+      "quality": 3,
+      "speed": 5,
+      "recommended": true,
+      "speakers": [],
+      "paths": {
+        "encoder": [
+          "encoder-epoch-99-avg-1.int8.onnx",
+          "encoder*.int8.onnx"
+        ],
+        "decoder": [
+          "decoder-epoch-99-avg-1.int8.onnx",
+          "decoder*.int8.onnx"
+        ],
+        "joiner": [
+          "joiner-epoch-99-avg-1.int8.onnx",
+          "joiner*.int8.onnx"
+        ],
+        "tokens": [
+          "tokens.txt"
+        ]
+      },
+      "options": {
+        "quantized": "true"
+      },
+      "minRamMb": 1024
+    },
+    {
+      "id": "vad-silero",
+      "name": "Silero VAD (bileşen)",
+      "task": "vad",
+      "engine": "silero",
+      "languages": [],
+      "sizeBytes": 643854,
+      "license": "MIT",
+      "author": "snakers4 / k2-fsa",
+      "description": "Konuşma aktivitesi algılama. Çevrimdışı STT modelleriyle canlı dinlemede ve dosya bölmede kullanılır (~0.6 MB).",
+      "url": "https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/silero_vad.onnx",
+      "format": "file",
+      "quality": 0,
+      "speed": 0,
+      "recommended": false,
+      "speakers": [],
+      "paths": {
+        "model": [
+          "silero_vad.onnx",
+          "*.onnx"
+        ]
+      },
+      "options": {},
+      "minRamMb": 0
+    }
+  ]
+}

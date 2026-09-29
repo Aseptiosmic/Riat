@@ -1,0 +1,27 @@
+{
+  "id": "lyane.sample.tr-sayi",
+  "name": "Türkçe Sayı Okuyucu",
+  "version": "1.0.0",
+  "author": "Lyane ekibi",
+  "description": "Seslendirmeden önce metindeki sayıları Türkçe kelimelere çevirir: '1.250 TL' → 'bin iki yüz elli TL'. Ayrıca kendi aracıyla tek tek dönüşüm yapmanızı sağlar.",
+  "descriptionEn": "Converts numbers to Turkish words before TTS.",
+  "api": 1,
+  "type": "script",
+  "entry": "main.js",
+  "hooks": ["tts.preprocess"],
+  "permissions": ["tts.text"],
+  "tools": [
+    {
+      "id": "sayi-cevirici",
+      "title": "Sayı Çevirici",
+      "description": "Bir metin yazın; içindeki sayılar Türkçe okunuşlarına çevrilir.",
+      "icon": "calculate",
+      "ui": [
+        { "type": "textarea", "id": "input", "label": "Metin", "multiline": true, "initial": "Sipariş 3.500 TL, teslimat 5 gün sonra, saat 14:30'da." },
+        { "type": "button", "id": "run", "label": "Dönüştür", "action": "convert" },
+        { "type": "textarea", "id": "output", "label": "Sonuç", "multiline": true }
+      ]
+    }
+  ],
+  "help": "Eklenti yalnızca seslendirilecek metni okur ve dönüştürür; hiçbir veri saklamaz veya göndermez."
+}

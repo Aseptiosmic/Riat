@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Lyane</string>
+    <string name="home">Ana Sayfa</string>
+    <string name="speak">Konuş</string>
+    <string name="listen">Dinle</string>
+    <string name="models">Modeller</string>
+    <string name="tools">Araçlar</string>
+    <string name="plugins">Eklentiler</string>
+    <string name="settings">Ayarlar</string>
+    <string name="drop">Lyane Drop</string>
+    <string name="library">Kütüphane</string>
+    <string name="about">Hakkında</string>
+    <string name="download">İndir</string>
+    <string name="cancel">İptal</string>
+    <string name="delete">Sil</string>
+    <string name="save">Kaydet</string>
+    <string name="stop">Durdur</string>
+    <string name="play">Oynat</string>
+    <string name="pause">Duraklat</string>
+    <string name="resume">Devam Et</string>
+    <string name="generate">Seslendir</string>
+    <string name="recording">Kayıt</string>
+    <string name="transcribe">Çeviriyaz</string>
+    <string name="installed">Yüklü</string>
+    <string name="not_installed">Yüklü değil</string>
+    <string name="all_local_title">%100 Yerel</string>
+    <string name="all_local_desc">Sesiniz ve metinleriniz cihazınızdan asla çıkmaz. Bulut yok, sunucu yok, izleme yok.</string>
+    <string name="download_service_notif">Model indirme işlemi sürüyor</string>
+    <string name="listen_service_notif">Lyane dinliyor…</string>
+    <string name="speak_service_notif">Lyane seslendiriyor…</string>
+    <string name="channel_downloads">Model İndirmeleri</string>
+    <string name="channel_listen">Canlı Dinleme</string>
+    <string name="channel_speak">Seslendirme</string>
+    <string name="mic_permission_needed">Mikrofon izni gerekiyor</string>
+    <string name="no_models_installed">Henüz model yüklü değil. Modeller sekmesinden indirin.</string>
+    <string name="privacy">Gizlilik</string>
+    <string name="installing_archive">Arşiv açılıyor ve doğrulanıyor…</string>
+</resources>

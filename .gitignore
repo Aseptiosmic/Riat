@@ -1,0 +1,23 @@
+# Derleme çıktıları
+.gradle/
+build/
+app/build/
+local.properties
+
+# IDE
+.idea/
+*.iml
+.DS_Store
+
+# Yerel AAR (elle indirilen sherpa-onnx)
+app/libs/*.aar
+
+# İmzalama
+*.jks
+*.keystore
+keystore.properties
+
+# Geçici dosyalar
+*.log
+*.part
+*.lyane-tmp/

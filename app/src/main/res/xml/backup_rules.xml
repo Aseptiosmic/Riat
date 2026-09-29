@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<full-backup-content>
+    <!-- Modeller ve ses dosyaları çok büyük olduğu için yedeklemeye dahil edilmez. -->
+    <exclude domain="file" path="models" />
+    <exclude domain="file" path="library/audio" />
+    <exclude domain="file" path="plugins_bin" />
+</full-backup-content>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Lyane logosu: ses dalgası halkası -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <group
+        android:scaleX="0.62"
+        android:scaleY="0.62"
+        android:pivotX="54"
+        android:pivotY="54">
+        <!-- Dış halka -->
+        <path
+            android:pathData="M54,14 A40,40 0 1,1 53.99,14"
+            android:strokeColor="#8B7CFF"
+            android:strokeWidth="4"
+            android:fillColor="#00000000" />
+        <!-- Ses dalgası çubukları -->
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M40,44 h4 v20 h-4 z M50,34 h4 v40 h-4 z M60,42 h4 v24 h-4 z M70,48 h4 v12 h-4 z M30,48 h4 v12 h-4 z" />
+    </group>
+</vector>
