@@ -44,7 +44,7 @@ jobs:
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: lyane-debug-apk
-          path: app/build/outputs/apk/**/debug/*.apk
+          path: app/build/outputs/apk/**/*.apk
           if-no-files-found: warn
 
       # Hata halinde: derleme günlüğünün kuyruğunu dala yaz ki
@@ -69,9 +69,11 @@ jobs:
           set +e
           LOG=/tmp/publish.log
           ls -laR app/build/outputs/apk/ > "$LOG" 2>&1
+          # APK'ları bulun (AGP split çıktısı apk/debug/ altındadır)
+          mapfile -t APKS < <(find app/build/outputs/apk -name "*.apk" | sort)
+          echo "bulunan APK'lar: ${APKS[*]}" >> "$LOG"
           gh release delete dev-build --cleanup-tag -y >> "$LOG" 2>&1
-          gh release create dev-build \
-            app/build/outputs/apk/*/debug/*.apk \
+          gh release create dev-build "${APKS[@]}" \
             --title "Lyane 1.0 — geliştirme derlemesi" \
             --prerelease \
             --notes "Otomatik derleme. Yükleme: APK'yı indirin, telefonda bilinmeyen kaynaklardan kuruluma izin verip açın. Arm64 çoğu modern telefon içindir; universal tüm cihazlarda çalışır (daha büyük). Modeller uygulama içi mağazadan indirilir." \
