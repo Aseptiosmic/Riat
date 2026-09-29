@@ -35,23 +35,11 @@
 
 > Task :app:testDebugUnitTest FAILED
 
-PluginScriptTest > arac eylemi map dondurur FAILED
-    java.lang.AssertionError at PluginScriptTest.kt:88
-
-TextSplitterTest > kısaltmalar bölmez FAILED
-    java.lang.AssertionError at TextSplitterTest.kt:28
-
 TextSplitterTest > satır sonları cümle sınırı sayılır FAILED
-    java.lang.AssertionError at TextSplitterTest.kt:48
+    java.lang.AssertionError at TextSplitterTest.kt:68
 
-TextSplitterTest > basit cümleler bölünür FAILED
-    java.lang.AssertionError at TextSplitterTest.kt:13
-
-WavIoTest > bos dosya degil FAILED
-    java.io.EOFException at WavIoTest.kt:34
-
-27 tests completed, 5 failed
-gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_3-1790671188962.json
+28 tests completed, 1 failed
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_3-1790671720449.json
 
 FAILURE: Build failed with an exception.
 
