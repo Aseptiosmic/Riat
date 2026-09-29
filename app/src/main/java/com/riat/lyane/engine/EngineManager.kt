@@ -65,13 +65,17 @@ class EngineManager(
 
     /** STT oturumu: akış (canlı) veya çevrimdışı. */
     sealed class AsrSession(val model: InstalledModel) {
+        abstract fun release()
 
         /** Whisper / Moonshine / SenseVoice / çevrimdışı transducer. */
-        class Offline(model: InstalledModel, val recognizer: OfflineRecognizer) : AsrSession(model) {
+        class Offline(
+            model: InstalledModel,
+            val recognizer: OfflineRecognizer,
+            private val rebuildConfig: (String, String, File?, Int) -> OfflineRecognizerConfig
+        ) : AsrSession(model) {
             fun decode(samples: FloatArray, sampleRate: Int): String {
                 val stream: OfflineStream = recognizer.createStream()
                 stream.acceptWaveform(samples, sampleRate)
-                stream.inputFinished()
                 recognizer.decode(stream)
                 val text = recognizer.getResult(stream).text
                 stream.release()
@@ -81,16 +85,15 @@ class EngineManager(
             /** Whisper dilini/görevini çalışma zamanında değiştirir. */
             fun updateWhisper(language: String, task: String, hotwords: File?, threads: Int) {
                 if (model.engine != "whisper") return
-                val cfg = EngineManager.buildOfflineConfig(model, language, task, hotwords, threads)
-                recognizer.setConfig(cfg)
+                recognizer.setConfig(rebuildConfig(language, task, hotwords, threads))
             }
 
-            fun release() = recognizer.release()
+            override fun release() = recognizer.release()
         }
 
         /** Canlı (akış) zipformer transducer. */
         class Live(model: InstalledModel, val recognizer: OnlineRecognizer) : AsrSession(model) {
-            fun release() = recognizer.release()
+            override fun release() = recognizer.release()
         }
     }
 
@@ -164,7 +167,16 @@ class EngineManager(
                             hotwords = hotwordsFile(model, s.hotwordsEnabled),
                             threads = s.asrThreads
                         )
-                    )
+                    ),
+                    rebuildConfig = { lang, task, hotwords, threads ->
+                        buildOfflineConfig(
+                            model = model,
+                            whisperLang = lang,
+                            whisperTask = task,
+                            hotwords = hotwords,
+                            threads = threads
+                        )
+                    }
                 )
             }
             asrSession = session

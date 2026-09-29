@@ -7,6 +7,7 @@ import com.riat.lyane.model.ModelStore
 import com.riat.lyane.model.TaskType
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.encodeToString
+import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.json.Json
 import java.io.File
 
@@ -38,7 +39,7 @@ class Benchmarker(
 
     fun history(): List<Result> =
         if (file.isFile) runCatching {
-            json.decodeFromString(List(Result.serializer()), file.readText())
+            json.decodeFromString(ListSerializer(Result.serializer()), file.readText())
         }.getOrDefault(emptyList()) else emptyList()
 
     private fun save(r: Result) {

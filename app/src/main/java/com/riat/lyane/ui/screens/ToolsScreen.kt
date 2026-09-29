@@ -17,7 +17,6 @@ import androidx.compose.material.icons.automirrored.filled.MenuBook
 import androidx.compose.material.icons.filled.Bolt
 import androidx.compose.material.icons.filled.Description
 import androidx.compose.material.icons.filled.Extension
-import androidx.compose.material.icons.filled.Hotword
 import androidx.compose.material.icons.filled.LibraryMusic
 import androidx.compose.material.icons.filled.Speed
 import androidx.compose.material.icons.filled.SwapHoriz

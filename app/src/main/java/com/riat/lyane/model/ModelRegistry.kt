@@ -13,7 +13,7 @@ import java.io.File
  *
  * Kaynaklar (öncelik sırasıyla):
  *  1. `assets/catalog/models.json` — uygulama ile gömülü gelen resmî liste
- *  2. `filesDir/catalogs/*.json`   — kullanıcının içe aktardığı kataloglar
+ *  2. filesDir/catalogs dizini     — kullanıcının içe aktardığı JSON kataloglar
  *     (SAF ile dosyadan ya da Lyane Drop ile başka cihazdan gelir)
  *
  * Katalog listesi hiçbir sunucudan çekilmez; yalnızca bu iki yerel kaynak

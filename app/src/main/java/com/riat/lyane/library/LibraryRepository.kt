@@ -10,6 +10,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.encodeToString
+import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.json.Json
 import java.io.File
 import java.util.UUID
@@ -47,7 +48,7 @@ class LibraryRepository(private val context: Context) {
     fun load() {
         _items.value = if (indexFile.isFile) {
             runCatching {
-                json.decodeFromString(List(Item.serializer()), indexFile.readText())
+                json.decodeFromString(ListSerializer(Item.serializer()), indexFile.readText())
             }.getOrElse {
                 LyLog.w(TAG, "Kütüphane indeksi okunamadı", it); emptyList()
             }.sortedByDescending { it.createdAtMs }

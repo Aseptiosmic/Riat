@@ -163,7 +163,7 @@ class PluginManager(
                 zos.closeEntry()
             }
         }
-        install(zip, "gömülü örnek")
+        install(zip, "gömülü örnek").getOrThrow()
     }
 
     fun uninstall(id: String) {

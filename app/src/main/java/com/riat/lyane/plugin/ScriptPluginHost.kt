@@ -1,6 +1,7 @@
 package com.riat.lyane.plugin
 
 import com.riat.lyane.core.LyLog
+import org.mozilla.javascript.ClassShutter
 import org.mozilla.javascript.Context
 import org.mozilla.javascript.Function
 import org.mozilla.javascript.Scriptable
@@ -33,7 +34,7 @@ class ScriptPluginHost(
             val cx = Context.enter()
             try {
                 cx.optimizationLevel = -1 // yorumlamalı mod: Android'de en güvenli
-                cx.classShutter = ClassShutter { name ->
+                cx.setClassShutter(ClassShutter { name ->
                     // Standart JS ve java temel tipleri dışında her şey kapalı
                     name.startsWith("org.mozilla.javascript.") ||
                         name == "java.lang.String" || name == "java.lang.Object" ||
@@ -41,7 +42,7 @@ class ScriptPluginHost(
                         name == "java.lang.Boolean" || name == "java.lang.Long" ||
                         name == "java.lang.Character" || name == "java.lang.Number" ||
                         name == "com.riat.lyane.plugin.PluginBridge"
-                }
+                })
                 val s = cx.initStandardObjects()
                 ScriptableObject.putProperty(s, "Lyane", Context.javaToJS(bridge, s))
                 cx.evaluateString(s, scriptFile.readText(), scriptFile.name, 1, null)
@@ -88,7 +89,12 @@ class ScriptPluginHost(
     private fun nativeObjectToMap(obj: org.mozilla.javascript.NativeObject): Map<String, String> {
         val map = LinkedHashMap<String, String>()
         for (id in obj.allIds) {
-            val v = obj.get(id, obj)
+            val v = when (id) {
+                is String -> obj.get(id, obj)
+                is Int -> obj.get(id, obj)
+                is Number -> obj.get(id.toInt(), obj)
+                else -> obj.get(id.toString(), obj)
+            }
             map[id.toString()] = when (v) {
                 is String -> v
                 is Number, is Boolean -> v.toString()

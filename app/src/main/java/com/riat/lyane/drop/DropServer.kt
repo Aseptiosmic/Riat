@@ -7,6 +7,8 @@ import com.riat.lyane.core.LyLog
 import fi.iki.elonen.NanoHTTPD
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.encodeToString
+import kotlinx.serialization.builtins.MapSerializer
+import kotlinx.serialization.builtins.serializer
 import kotlinx.serialization.json.Json
 import java.io.File
 import java.io.FileInputStream
@@ -127,7 +129,7 @@ class DropServer(
         return out
     }
 
-    private fun localWifiAddress(): Inet4Address? = wifiLikeAddresses().firstOrNull()?.first
+    private fun localWifiAddress(): java.net.InetAddress? = wifiLikeAddresses().firstOrNull()?.first
 
     /** İstemci IP'si aynı Wi-Fi alt ağında mı? */
     private fun sameSubnet(remoteIp: String?): Boolean {
@@ -143,7 +145,7 @@ class DropServer(
         return false
     }
 
-    private fun ipToLong(a: Inet4Address): Long {
+    private fun ipToLong(a: java.net.InetAddress): Long {
         val b = a.address
         return ((b[0].toLong() and 0xFF) shl 24) or ((b[1].toLong() and 0xFF) shl 16) or
             ((b[2].toLong() and 0xFF) shl 8) or (b[3].toLong() and 0xFF)
@@ -184,7 +186,7 @@ class DropServer(
         if (!pinValid()) regeneratePin()
         val body = readBody(session, limit = 4 * 1024).toString(Charsets.UTF_8)
         val pinSent = runCatching {
-            json.decodeFromString(MapSerializerString, body)["pin"] ?: ""
+            json.decodeFromString(MapSerializer(String.serializer(), String.serializer()), body)["pin"] ?: ""
         }.getOrDefault("")
         if (pinAttempts >= 5) return forbidden("Çok fazla hatalı deneme; sunucuyu yeniden başlatın")
         if (pinSent != pin) {
